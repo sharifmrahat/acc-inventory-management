@@ -20,8 +20,8 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
       enum: {
-        values: ["kg", "g", "l", "ml"],
-        message: "unit must be kg,g,l or ml",
+        values: ["kg", "litre", "pcs", "metre"],
+        message: "unit must be kg, litre, pcs or metre",
       },
     },
     quantity: {

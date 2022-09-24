@@ -37,15 +37,15 @@ module.exports.updateProductService = async (id, data) => {
 };
 
 module.exports.bulkUpdateProductService = async (data) => {
-  return await Products.updateMany({ _id: data.ids }, data.data, {
-    runValidators: true,
-  });
-  // const products = [];
-  // data.ids.forEach((product) => {
-  //   products.push(Products.updateOne({ _id: product.id }, product.data));
+  // return await Products.updateMany({ _id: data.ids }, data.data, {
+  //   runValidators: true,
   // });
-  // const result = await Promise.all(products);
-  // return result;
+  const products = [];
+  data.ids.forEach((product) => {
+    products.push(Products.updateOne({ _id: product.id }, product.data));
+  });
+  const result = await Promise.all(products);
+  return result;
 };
 
 module.exports.deleteProductService = async (id) => {

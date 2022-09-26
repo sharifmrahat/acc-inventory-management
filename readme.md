@@ -20,7 +20,7 @@ git clone https://github.com/sharifmrahat/acc-inventory-management.git
 npm install
 ```
 
-### Step-3 - Run nodemon:[^note]
+#### Step-3 - Run nodemon:[^note]
 
 ```
 npm run dev

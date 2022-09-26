@@ -6,7 +6,7 @@ module.exports.getProductService = async (query) => {
   //   .where("quantity")
   //   .lt(10)
   //   .limit(2);
-  const { status, limit, sort, page } = query;
+  const { status, limit = 3, sort, page } = query;
 
   let skip, sorted, fields;
   if (page) {

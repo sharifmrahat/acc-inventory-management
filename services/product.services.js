@@ -7,17 +7,23 @@ module.exports.getProductService = async (query) => {
   //   .lt(10)
   //   .limit(2);
   const { status, limit, sort, page } = query;
-  let sorted, fields;
+
+  let skip, sorted, fields;
+  if (page) {
+    skip = (page - 1) * parseInt(limit);
+  }
   if (sort) {
     sorted = sort.split(",").join(" ");
   }
   if (query.fields) {
     fields = query.fields.split(",").join(" ");
   }
-  return await Products.find();
-  // .sort(sorted)
-  // .select(fields)
-  // .limit(+limit);
+
+  return await Products.find()
+    .skip(skip)
+    .sort(sorted)
+    .select(fields)
+    .limit(+limit);
 };
 
 module.exports.createProductService = async (data) => {

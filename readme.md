@@ -10,20 +10,20 @@
 
 1. Step-1 | Clone repository:
 
-   ```git clone https://github.com/sharifmrahat/acc-inventory-management.git
-
+   ```
+   git clone https://github.com/sharifmrahat/acc-inventory-management.git
    ```
 
 2. Step-2 | Install packages:
 
-   ```npm install
-
+   ```
+   npm install
    ```
 
 3. Step-3 | Run nodemon:[^note]
 
-   ```npm run dev
-
+   ```
+   npm run dev
    ```
 
 [^note]:

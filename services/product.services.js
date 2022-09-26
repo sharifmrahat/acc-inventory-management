@@ -6,7 +6,7 @@ module.exports.getProductService = async (query) => {
   //   .where("quantity")
   //   .lt(10)
   //   .limit(2);
-  const { status, limit = 3, sort, page } = query;
+  const { status, limit = 3, sort, page = 1 } = query;
 
   let skip, sorted, fields;
   if (page) {
@@ -19,11 +19,15 @@ module.exports.getProductService = async (query) => {
     fields = query.fields.split(",").join(" ");
   }
 
-  return await Products.find()
+  const totalProduct = await Products.countDocuments();
+  const totalPage = Math.ceil(totalProduct / limit);
+  const result = await Products.find()
     .skip(skip)
     .sort(sorted)
     .select(fields)
     .limit(+limit);
+
+  return { totalProduct, totalPage, result };
 };
 
 module.exports.createProductService = async (data) => {
